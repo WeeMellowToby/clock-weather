@@ -12,25 +12,28 @@ export default function Home() {
     ,60000);
     GetWeatherInBrighton(setWeather);
   }, [])
-  useEffect(() => {
-    console.log(weather);
-  }, [weather])
 
+  function Capitalise(string) {
+    const words = string.split(" ");
+    for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+  return(words.join(" "));
+  }
   return (
     <div>
-      <div>
+      <Image src="/images/background.jpg" layout="fill" className="opacity-25"/>
       <div className = 'clock'>
       <Clock
           format={'HH:mm:ss'}
           ticking={true}
           
           />
-          {weather != null ? <p>{weather.main.temp}&#8451; {weather.weather[0].description} wind: {weather.wind.speed} km/h</p> : 'Loading'}
+          {weather != null ? <p>{Math.round(weather.main.temp * 10) / 10}&#8451; {Capitalise(weather.weather[0].description)} Wind: {weather.wind.speed} km/h</p> : ' Loading'}
       </div>
 
       <div className=' absolute bottom-10 right-10'>
-          <Image src="/images/logo.png" alt="logo" width={273} height={88}/>
-      </div>
+          <Image src="/images/logo.png" alt="logo" width={270} height={60} />
       </div>
 
       </div>
