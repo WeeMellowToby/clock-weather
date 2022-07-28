@@ -12,7 +12,9 @@
         transform: translate(-50%, -50%);
         color: #3aafe6;
         opacity: 0.8;
-        text-shadow: 0 0 100px rgba(50, 50, 50, 1),  0 0 50px rgba(10, 175, 230, 1);
+        text-shadow: 0 0 2vh rgba(50, 50, 50, 1),  0 0 1vh rgba(10, 175, 230, 1);
+        margin: 0;
+        padding: 0;
         font-size: 12vh;
     }
     body {
