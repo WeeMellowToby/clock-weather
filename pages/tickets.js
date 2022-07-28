@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from "next/router"
-import Login from "components/Login"
+import { Login } from "./components/Login"
 import { getTickets } from '../tickets/ticketCount'
 export default function Tickets({hasReadPermission}) {
     useEffect(() => {
