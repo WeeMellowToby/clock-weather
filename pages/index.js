@@ -25,7 +25,7 @@ export default function Home() {
           ticking={true}
           
           />
-          {weather != null ? <p>{weather.main.temp}&#8451; {weather.weather[0].description}</p> : 'Loading'}
+          {weather != null ? <p>{weather.main.temp}&#8451; {weather.weather[0].description} wind: {weather.wind.speed} km/h</p> : 'Loading'}
       </div>
 
       <div className=' absolute bottom-10 right-10'>
