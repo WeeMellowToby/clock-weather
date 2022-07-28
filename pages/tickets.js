@@ -4,7 +4,7 @@ import Login from "./components/Login"
 import { getTickets } from '../tickets/ticketCount'
 export default function Tickets({ hasReadPermission }) {
     useEffect(() => {
-        if (!hasReadPermission) {
+        if (hasReadPermission) {
             getTickets(console.log)
         }
     }, [])
