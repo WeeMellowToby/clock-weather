@@ -7,7 +7,7 @@ export default function Home() {
   const [weather,setWeather] = useState(null);
   useEffect(() => {
     var timer = setInterval(function(){
-      GetWeatherHere(setWeather);
+      GetWeatherInBrighton(setWeather);
     }
     ,60000);
     GetWeatherInBrighton(setWeather);
