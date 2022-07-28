@@ -3,17 +3,14 @@ import Clock from 'react-live-clock';
 import { useState } from 'react';
 import { GetWeatherHere, GetWeatherInBrighton } from './api/weather';
 import { useEffect } from 'react';
-import { getTickets } from '../tickets/ticketCount';
 export default function Home() {
   const [weather,setWeather] = useState(null);
-  const [tickets,setTickets] = useState(null);
   useEffect(() => {
     var timer = setInterval(function(){
       GetWeatherInBrighton(setWeather);
     }
     ,60000);
     GetWeatherInBrighton(setWeather);
-    getTickets(console.log);
   }, [])
 
   function Capitalise(string) {
