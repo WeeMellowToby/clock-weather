@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Cookies from "universal-cookie"
-import consts from "../consts"
+import consts from "../../consts"
 
 const Login = ({ redirectPath }) => {
   const [password, setPassword] = useState("")
