@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Clock from 'react-live-clock';
 import { useState } from 'react';
-import { GetWeatherHere } from './api/weather';
+import { GetWeatherHere, GetWeatherInBrighton } from './api/weather';
 import { useEffect } from 'react';
 export default function Home() {
   const [weather,setWeather] = useState(null);
@@ -10,7 +10,7 @@ export default function Home() {
       GetWeatherHere(setWeather);
     }
     ,60000);
-    GetWeatherHere(setWeather);
+    GetWeatherInBrighton(setWeather);
   }, [])
   useEffect(() => {
     console.log(weather);
@@ -28,7 +28,7 @@ export default function Home() {
           {weather != null ? <p>{weather.main.temp}&#8451; {weather.weather[0].description}</p> : 'Loading'}
       </div>
 
-      <div className=' absolute bottom-0 right-0'>
+      <div className=' absolute bottom-10 right-10'>
           <Image src="/images/logo.png" alt="logo" width={273} height={88}/>
       </div>
       </div>

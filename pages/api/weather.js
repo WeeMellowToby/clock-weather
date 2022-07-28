@@ -10,6 +10,10 @@ export async function GetWeatherHere(_callback) {
     }
     
 }
+export async function GetWeatherInBrighton(_callback) {
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${50.835227}&lon=${-0.129369}&appid=${key}&units=metric`
+    _callback(await getWeather(url));
+}
 async function getCurrentPosition() {
     return await new Promise( (resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
