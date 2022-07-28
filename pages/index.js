@@ -29,7 +29,7 @@ export default function Home() {
           ticking={true}
           
           />
-          {weather != null ? <p>{Math.round(weather.main.temp * 10) / 10}&#8451; {Capitalise(weather.weather[0].description)} Wind: {weather.wind.speed} km/h</p> : ' Loading'}
+          {weather != null ? <p>{Math.round(weather.main.temp * 10) / 10}&#8451; <br/> {Capitalise(weather.weather[0].description)} <br/> Wind: {weather.wind.speed} km/h</p> : ' Loading'}
       </div>
 
       <div className=' absolute bottom-10 right-10'>
