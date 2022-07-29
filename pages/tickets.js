@@ -7,11 +7,6 @@ import { GetWeatherInBrighton } from './api/weather';
 import Image from 'next/image';
 export default function Tickets({hasReadPermission}) {
   const [tickets,SetTickets] = React.useState(0);
-    useEffect(() => {
-        if (hasReadPermission) {
-            getTickets(SetTickets);
-        }
-    }, [])
     const router = useRouter()
     if (!hasReadPermission) {
         return <Login redirectPath={router.asPath} />
@@ -20,9 +15,16 @@ export default function Tickets({hasReadPermission}) {
       useEffect(() => {
         var timer = setInterval(function(){
           GetWeatherInBrighton(setWeather);
+          if (hasReadPermission) {
+            getTickets(SetTickets);
+          }
         }
-        ,60000);
+        
+        ,180000);
         GetWeatherInBrighton(setWeather);
+        if (hasReadPermission) {
+          getTickets(SetTickets);
+        }
       }, [])
     
       function Capitalise(string) {
