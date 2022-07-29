@@ -8,24 +8,25 @@ import Image from 'next/image';
 export default function Tickets({hasReadPermission}) {
   const [tickets,SetTickets] = React.useState(0);
     const router = useRouter()
-    if (!hasReadPermission) {
-        return <Login redirectPath={router.asPath} />
-      }
-      const [weather,setWeather] = useState(null);
-      useEffect(() => {
-        var timer = setInterval(function(){
-          GetWeatherInBrighton(setWeather);
-          if (hasReadPermission) {
-            getTickets(SetTickets);
-          }
-        }
-        
-        ,180000);
+    const [weather,setWeather] = useState(null);
+    useEffect(() => {
+      var timer = setInterval(function(){
         GetWeatherInBrighton(setWeather);
         if (hasReadPermission) {
           getTickets(SetTickets);
         }
-      }, [])
+      }
+      
+      ,180000);
+      GetWeatherInBrighton(setWeather);
+      if (hasReadPermission) {
+        getTickets(SetTickets);
+      }
+    }, [])
+    if (!hasReadPermission) {
+        return <Login redirectPath={router.asPath} />
+      }
+
     
       function Capitalise(string) {
         const words = string.split(" ");
