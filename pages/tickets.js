@@ -49,7 +49,7 @@ export default function Tickets({hasReadPermission}) {
               ticking={true}
               
               />
-              {weather != null ? <p>{Math.round(weather.main.temp * 10) / 10}&#8451; <br/> {Capitalise(weather.weather[0].description)} <br/> Wind: {weather.wind.speed} km/h <br/> {tickets} Tickets Scanned </p> : ' Loading'}
+              {weather != null ? <p>{Math.round(weather.main.temp * 10) / 10}&#8451; <br/> {Capitalise(weather.weather[0].description)} <br/> Wind: {weather.wind.speed} km/h <br/> {tickets != 0 ? tickets : 'Loading'} Tickets Scanned </p> : <p>Loading</p>}
               
           </div>
     
