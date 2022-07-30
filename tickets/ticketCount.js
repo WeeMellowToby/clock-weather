@@ -1,8 +1,8 @@
-export async function getTickets(_callback) {
+export async function getTickets(jwt,_callback) {
     let response = fetch('https://scandb.tcket.co.uk:8011/scan-count', { 
         method: 'get', 
         headers: new Headers({
-          'authorization': 'Bearer '  + process.env.NEXT_PUBLIC_SCANNING_KEY, 
+          'authorization': 'Bearer '  + jwt, 
         }),
       });
     let data = await (await response).json();
@@ -14,4 +14,15 @@ export async function getTickets(_callback) {
         
     }
     _callback(tickets);
+}
+export async function getJWT(_callback) {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: process.env.NEXT_PUBLIC_UID, password: process.env.NEXT_PUBLIC_AUTH_PASSWORD })
+};
+  let response = fetch('https://scandb.tcket.co.uk:8011/auth', requestOptions);
+    let data = await (await response).json();
+    _callback(data.token);
+
 }

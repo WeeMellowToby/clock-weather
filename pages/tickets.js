@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/router"
 import  Login  from "./components/login"
-import { getTickets } from '../tickets/ticketCount'
+import { getJWT, getTickets } from '../tickets/ticketCount'
 import Clock from 'react-live-clock';
 import { GetWeatherInBrighton } from './api/weather';
 import Image from 'next/image';
@@ -9,18 +9,23 @@ export default function Tickets({hasReadPermission}) {
   const [tickets,SetTickets] = React.useState(0);
     const router = useRouter()
     const [weather,setWeather] = useState(null);
+    let jwt;
     useEffect(() => {
       var timer = setInterval(function(){
         GetWeatherInBrighton(setWeather);
         if (hasReadPermission) {
-          getTickets(SetTickets);
+          getTickets(jwt,SetTickets);
         }
       }
       
       ,180000);
       GetWeatherInBrighton(setWeather);
       if (hasReadPermission) {
-        getTickets(SetTickets);
+        getJWT((token) => {
+          getTickets(token,SetTickets);
+          jwt = token;
+        })
+        
       }
     }, [])
     if (!hasReadPermission) {
