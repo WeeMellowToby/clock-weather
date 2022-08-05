@@ -9,7 +9,10 @@ export async function getTickets(jwt,_callback) {
     let tickets = 0;
     // run through all the scanners in the data and add up the scanned tickets
     for (let scanner in data.totals) {
+      if(scanner.tt == 19225 || scanner.tt == 19226) {
         tickets += data.totals[scanner].scanned;
+      }
+
         
         
     }
