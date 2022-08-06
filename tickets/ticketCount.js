@@ -9,9 +9,9 @@ export async function getTickets(jwt,_callback) {
     let tickets = 0;
     // run through all the scanners in the data and add up the scanned tickets
     for (let scanner in data.totals) {
+        if(data.totals[scanner].tt == process.env.NEXT_PUBLIC_SCANNER_1 || data.totals[scanner].tt == process.env.NEXT_PUBLIC_SCANNER_2) {
         tickets += data.totals[scanner].scanned;
-        
-        
+        }
     }
     _callback(tickets);
 }
