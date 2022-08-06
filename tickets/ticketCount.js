@@ -12,6 +12,7 @@ export async function getTickets(jwt,_callback) {
         if(data.totals[scanner].tt == process.env.NEXT_PUBLIC_SCANNER_1 || data.totals[scanner].tt == process.env.NEXT_PUBLIC_SCANNER_2) {
         tickets += data.totals[scanner].scanned;
         }
+        
     }
     _callback(tickets);
 }
