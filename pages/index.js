@@ -11,7 +11,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 
 export default function Home() {
-  const [weather,setWeather] = useState(null);pages/index.js
+  const [weather,setWeather] = useState(null);
   useEffect(() => {
     var timer = setInterval(function(){
       GetWeatherInBrighton(setWeather);
