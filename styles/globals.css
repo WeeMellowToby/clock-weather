@@ -3,16 +3,6 @@
 @tailwind utilities;
 
 @responsive {
-    .clock {
-        font-family: 'Share Tech Mono', monospace;
-        text-align: center;
-        color: #3aafe6;
-        opacity: 0.8;
-        text-shadow: 0 0 2vh rgba(50, 50, 50, 1),  0 0 1vh rgba(10, 175, 230, 1);
-        margin: 0;
-        padding: 0;
-        font-size: 15vh;
-    }
     .clocktickets {
         font-family: 'Share Tech Mono', monospace;
         text-align: center;
@@ -23,7 +13,44 @@
         padding: 0;
         font-size: 12vh;
     }
+    .center {
+        margin: auto;
+        width: 70%;
+        padding: 10px;
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+        color: #3aafe6;
+        opacity: 0.8;
+        text-shadow: 0 0 2vh rgba(50, 50, 50, 1),  0 0 1vh rgba(10, 175, 230, 1);
+        font-size: 15vh;
+      }
+      .speedometer {
+        margin-top: -320px;
+        margin-left: 350px;
+        width: 40%;
+      }
+      .weather-desc {
+        font-size: 9vh;
+        margin-left: 950px;
+        margin-top:-250px;
+        width:50%
+      }
+      .speed-text {
+        margin-top: -320px;
+        font-size: 7.5vh;
+      }
+      .thermometer {
+        margin-top: -50px;
+        margin-left: -150px;
+      }
+      .temp-text {
+        margin-left: -1475px;
+        font-size: 7.5vh;
+      }
     body {
     background-color: #000;
+    }
+    .scanned {
+        font-size: 10vh;
     }
 }
