@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Clock from 'react-live-clock';
 import { useState } from 'react';
-import { GetWeatherHere, GetWeatherInBrighton } from './api/weather';
+import { GetWeatherHere} from './api/weather';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const Thermometer = dynamic(() => import('react-thermometer-ecotropy'), {
@@ -14,10 +14,10 @@ export default function Home() {
   const [weather,setWeather] = useState(null);
   useEffect(() => {
     var timer = setInterval(function(){
-      GetWeatherInBrighton(setWeather);
+      GetWeatherHere(setWeather);
     }
     ,60000);
-    GetWeatherInBrighton(setWeather);
+    GetWeatherHere(setWeather);
   }, [])
 
   function Capitalise(string) {
