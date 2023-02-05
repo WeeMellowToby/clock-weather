@@ -18,6 +18,7 @@ export default function Home() {
     }
     ,60000);
     GetWeatherHere(setWeather);
+    
   }, [])
 
   function Capitalise(string) {
@@ -29,24 +30,28 @@ export default function Home() {
   }
   return (
     <div className=''>
-      <Image src="/images/background.jpg" layout="fill" className="opacity-25"/>
+      {weather != null ? <Image src={"/images/weatherPhotos/" + weather.weather[0].description + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/clear sky.jpg" layout="fill" className="opacity-75"/>}
+      
       <div className = 'center'>
       <Clock
           format={'HH:mm:ss'}
           ticking={true}
-          
           />
           
           {weather != null ? <p> 
-            <div>
-            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height="300" tooltipValue={false} className="thermometer"/>
+            <div className='widget thermometerwidget'>
+            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height="275" tooltipValue={false} className="thermometer"/>
             <div className='temp-text'>{Math.round(weather.main.temp)}&deg;C</div>
             </div>
-            <div className="speedometer">
-             <CircularProgressbar value={(weather.wind.speed / 31) * 100} circleRatio={0.5} styles={buildStyles({rotation: 3 / 4, strokeLinecap: "round", trailColor: "rgba(238, 238, 255, 0.3)", pathColor: "#FFF" })}/>
+            <div className="speedometer widget">
+             <CircularProgressbar value={(weather.wind.speed / 31) * 100} circleRatio={0.5} styles={buildStyles({rotation: 3 / 4, strokeLinecap: "round", trailColor: "rgba(36,36,38, 0.5)", pathColor: "#08E" })}/>
              <div className='speed-text'>{weather.wind.speed} mph</div>
             </div>
-             <div className='weather-desc'>{Capitalise(weather.weather[0].description)}</div>
+             <div className='widget weather-widget'>
+             <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width="200px" height="200px" className='weathericon'/>
+            <div className='weather-desc'>{Capitalise(weather.weather[0].description)}</div>
+             </div>
+             
              </p> : ' Loading'}
       </div>
 
