@@ -43,10 +43,7 @@ export default function Home() {
       {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/clear sky.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
-      <Clock
-          format={'HH:mm:ss'}
-          ticking={true}
-          />
+      <div className='clock-div'><Clock format={'HH:mm:ss'} ticking={true}/></div>
           
           {weather != null ? <p> 
             <div className='widget thermometerwidget'>
@@ -55,7 +52,7 @@ export default function Home() {
             </div>
             <div className="speedometer widget">
              <CircularProgressbar value={(weather.wind.speed / 31) * 100} circleRatio={0.5} styles={buildStyles({rotation: 3 / 4, strokeLinecap: "round", trailColor: "rgba(36,36,38, 0.5)", pathColor: "#08E" })}/>
-             <div className='speed-text'>{weather.wind.speed} mph</div>
+             <div className='speed-text'>{weather.wind.speed}mph</div>
             </div>
              <div className='widget weather-widget'>
              <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width="200px" height="200px" className='weathericon'/>
