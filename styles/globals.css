@@ -33,8 +33,8 @@
         padding-right: 20px;
       }
       .weather-desc {
-        margin-top: -120px;
-        font-size: 9vh;
+        margin-top: -80px;
+        font-size: 7vh;
       }
       .speed-text {
         margin-top: -320px;
@@ -61,7 +61,7 @@
       .weather-widget {
         margin-left: 1000px;
         margin-top:-500px;
-
+        padding-top: 20px;
       }
     body {
     background-color: #000;

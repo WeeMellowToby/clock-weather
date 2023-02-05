@@ -18,7 +18,7 @@ export default function Home() {
     }
     ,60000);
     GetWeatherHere(setWeather);
-    
+    console.log(weather)
   }, [])
 
   function Capitalise(string) {
@@ -28,9 +28,19 @@ export default function Home() {
   }
   return(words.join(" "));
   }
+  var imageurl;
+  if(weather != null) {
+    var idnum = ("" + weather.weather[0].id)[0]
+    if(idnum == 8) {
+      imageurl = "" + weather.weather[0].id
+    } else {
+      imageurl = "" + idnum
+    }
+
+  }
   return (
     <div className=''>
-      {weather != null ? <Image src={"/images/weatherPhotos/" + weather.weather[0].description + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/clear sky.jpg" layout="fill" className="opacity-75"/>}
+      {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/clear sky.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
       <Clock
