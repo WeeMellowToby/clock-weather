@@ -25,8 +25,8 @@
         font-size: 15vh;
       }
       .speedometer {
-        margin-top: -500px;
-        margin-left: 400px;
+        margin-top: 20px;
+        margin-left: -200px;
         width: 40%;
         padding-top: 100px;
         padding-left: 20px;
@@ -34,34 +34,61 @@
       }
       .weather-desc {
         margin-top: -80px;
-        font-size: 7vh;
+        font-size: 3vh;
+      }
+      .real-weather-desc {
+        margin-top: 0px;
+        font-size: 4vh;
       }
       .speed-text {
-        margin-top: -320px;
-        font-size: 7.5vh;
+        margin-top: -150px;
+        font-size: 5vh;
+      }
+      .real-speed-text {
+        margin-top: -70px;
+        font-size: 3vh;
+      }
+      .gust {
+        font-size: 3vh;
+      }
+      .wind-dir {
+        font-size: 3vh;
       }
       .temp-text {
-        font-size: 7.5vh;
+        font-size: 5vh;
+        margin-top: -100px;
+        margin-left: -150px;
       }
       .widget {
         border-radius: 20px;
-        height: 500px;
-        width: 500px;
+        height: 300px;
+        width: 300px;
         border: 2px solid rgba(0, 0, 0, .5);
         background-color: rgba(255,255,255,0.99);
         box-shadow: 5px 5px rgba(0,0,0,0.5);
       }
       .thermometerwidget {
         margin-left: -200px;
+        margin-top: -350px;
         padding-top: 70px;
       }
       .thermometer {
-        margin-left: 200px
+        margin-left: 130px;
+        margin-top: -65px;
       }
       .weather-widget {
-        margin-left: 1000px;
-        margin-top:-500px;
+        margin-left: -200px;
+        margin-top: 20px;
         padding-top: 20px;
+        height: 300px;
+        width: 300px;
+      }
+      .real-weather-widget {
+        margin-left: -300px;
+        margin-top: 20px;
+        padding-top: 20px;
+        height: 300px;
+        width: 400px;
       }
       .clock-div {
         border-radius: 20px;
@@ -78,6 +105,13 @@
     color: #fff;
     }
     .scanned {
-        font-size: 10vh;
+        font-size: 5vh;
+    }
+    .logo {
+      margin-left: 850px;
+    }
+    .real {
+      margin-left: 1400px;
+      margin-top: -940px;
     }
 }

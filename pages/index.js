@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Clock from 'react-live-clock';
 import { useState } from 'react';
-import { GetWeatherHere} from './api/weather';
+import { GetWeatherHere, GetWeatherInBrighton, wunderground} from './api/weather';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const Thermometer = dynamic(() => import('react-thermometer-ecotropy'), {
@@ -12,13 +12,16 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
 export default function Home() {
   const [weather,setWeather] = useState(null);
+  const [realWeather,setRealWeather] = useState(null)
   useEffect(() => {
     var timer = setInterval(function(){
-      GetWeatherHere(setWeather);
+      GetWeatherInBrighton(setWeather);
+      console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,"IBUNTI2",setRealWeather))
     }
+    
     ,60000);
-    GetWeatherHere(setWeather);
-    console.log(weather)
+    GetWeatherInBrighton(setWeather);
+    console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,"IBUNTI2",setRealWeather))
   }, [])
 
   function Capitalise(string) {
@@ -40,7 +43,7 @@ export default function Home() {
   }
   return (
     <div className=''>
-      {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/clear sky.jpg" layout="fill" className="opacity-75"/>}
+      {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/800.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
       <div className='clock-div'><Clock format={'HH:mm:ss'} ticking={true}/></div>
@@ -57,12 +60,34 @@ export default function Home() {
              <div className='widget weather-widget'>
              <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width="200px" height="200px" className='weathericon'/>
             <div className='weather-desc'>{Capitalise(weather.weather[0].description)}</div>
-             </div>
+            </div>
+
+             
+             </p> : ' Loading'}
+             {realWeather != null ? <p className='real'> 
+            <div className='widget thermometerwidget'>
+            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height="275" tooltipValue={false} className="thermometer"/>
+            <div className='temp-text'>{Math.round(realWeather.metric.temp)}&deg;C</div>
+            </div>
+            <div className="speedometer widget">
+             <div className='real-speed-text'>{realWeather.metric.windSpeed}kmh speed</div>
+             <div className='gust'>{realWeather.metric.windGust}kmh gust</div>
+             <div className='wind-dir'>Direction: {realWeather.winddir}°</div>
+            </div>
+             <div className='widget real-weather-widget'>
+             
+            <div className='real-weather-desc'>
+            {realWeather.metric.precipTotal}mm total precip {realWeather.metric.precipRate}mm precip rate
+            
+            </div>
+            </div>
+
              
              </p> : ' Loading'}
       </div>
+      
 
-      <div className=' absolute bottom-10 right-10'>
+      <div className='logo'>
           <Image src="/images/logo.png" alt="logo" width={270} height={60} />
       </div>
 
