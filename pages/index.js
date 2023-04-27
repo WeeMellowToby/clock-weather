@@ -46,7 +46,7 @@ export default function Home() {
       {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/800.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
-      <div className='clock-div'><Clock format={'HH:mm:ss'} ticking={true}/></div>
+      <div className='clock-div'><Clock format={'HH:mm:ss'} ticking={true}/><p className='legend'>&larr; Predicted &nbsp;&nbsp;&nbsp;&nbsp; Actual &rarr;</p></div>
           
           {weather != null ? <p> 
             <div className='widget thermometerwidget'>
@@ -70,20 +70,23 @@ export default function Home() {
             <div className='temp-text'>{Math.round(realWeather.metric.temp)}&deg;C</div>
             </div>
             <div className="speedometer widget">
-             <div className='real-speed-text'>{realWeather.metric.windSpeed}kmh speed</div>
-             <div className='gust'>{realWeather.metric.windGust}kmh gust</div>
-             <div className='wind-dir'>Direction: {realWeather.winddir}°</div>
+
+             <div className='real-speed-text'><b><u>Wind</u></b> <br/> {realWeather.metric.windSpeed}kmh Speed</div>
+             <div className='gust'>{realWeather.metric.windGust}kmh Gust</div>
+             <div className='wind-dir'>Heading: {realWeather.winddir}°</div>
             </div>
              <div className='widget real-weather-widget'>
              
             <div className='real-weather-desc'>
-            {realWeather.metric.precipTotal}mm total precip {realWeather.metric.precipRate}mm precip rate
+            <b><u>Precipitation</u></b> <br/>
+            {realWeather.metric.precipTotal}mm Total <br/>{realWeather.metric.precipRate}mm Rate <br/><br/> UV index: {realWeather.uv}
             
             </div>
+            
             </div>
-
              
              </p> : ' Loading'}
+             
       </div>
       
 

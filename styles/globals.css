@@ -38,7 +38,7 @@
       }
       .real-weather-desc {
         margin-top: 0px;
-        font-size: 4vh;
+        font-size: 3vh;
       }
       .speed-text {
         margin-top: -150px;
@@ -61,14 +61,14 @@
       }
       .widget {
         border-radius: 20px;
-        height: 300px;
-        width: 300px;
+        height: 28vh;
+        width: 15.625vw;
         border: 2px solid rgba(0, 0, 0, .5);
         background-color: rgba(255,255,255,0.99);
         box-shadow: 5px 5px rgba(0,0,0,0.5);
       }
       .thermometerwidget {
-        margin-left: -200px;
+        margin-left: -10.41vw;
         margin-top: -350px;
         padding-top: 70px;
       }
@@ -78,17 +78,17 @@
       }
       .weather-widget {
         margin-left: -200px;
-        margin-top: 20px;
-        padding-top: 20px;
-        height: 300px;
-        width: 300px;
+        margin-top: 1.8vh;
+        padding-top: 1.8vh;
+        height: 28vh;
+        width: 15.625vw;
       }
       .real-weather-widget {
-        margin-left: -300px;
+        margin-left: -190px;
         margin-top: 20px;
-        padding-top: 20px;
-        height: 300px;
-        width: 400px;
+        padding-top: 10px;
+        height: 26.5vh;
+        width: 15vw;
       }
       .clock-div {
         border-radius: 20px;
@@ -112,6 +112,11 @@
     }
     .real {
       margin-left: 1400px;
-      margin-top: -940px;
+      margin-top: -950px;
+    }
+
+    .legend {
+      font-size: 3vh;
+      margin-top: -3vh
     }
 }
