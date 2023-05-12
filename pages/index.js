@@ -55,7 +55,7 @@ export default function Home() {
             </div>
             <div className="speedometer widget">
              <CircularProgressbar value={(weather.wind.speed / 31) * 100} circleRatio={0.5} styles={buildStyles({rotation: 3 / 4, strokeLinecap: "round", trailColor: "rgba(36,36,38, 0.5)", pathColor: "#08E" })}/>
-             <div className='speed-text'>{weather.wind.speed * 1.61}kmh</div>
+             <div className='speed-text'>{Math.round(weather.wind.speed * 1.61 * 100) / 100}kmh</div>
             </div>
              <div className='widget weather-widget'>
              <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width="200px" height="200px" className='weathericon'/>
