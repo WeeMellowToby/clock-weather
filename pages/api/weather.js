@@ -14,7 +14,7 @@ export async function GetWeatherHere(_callback) {
     
 }
 export async function GetWeatherInBrighton(_callback) {
-    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${51.59925896152268}&lon=${-2.203956600846051}&appid=${key}&units=metric`
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.NEXT_PUBLIC_LAT}&lon=${process.env.NEXT_PUBLIC_LON}&appid=${key}&units=metric`
     _callback(await getWeather(url));
 }
 async function getCurrentPosition() {

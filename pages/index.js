@@ -16,12 +16,12 @@ export default function Home() {
   useEffect(() => {
     var timer = setInterval(function(){
       GetWeatherInBrighton(setWeather);
-      console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,"IBUNTI2",setRealWeather))
+      console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather))
     }
     
     ,60000);
     GetWeatherInBrighton(setWeather);
-    console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,"IBUNTI2",setRealWeather))
+    console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather))
   }, [])
 
   function Capitalise(string) {
