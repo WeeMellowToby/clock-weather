@@ -13,7 +13,16 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 export default function Home() {
   const [weather,setWeather] = useState(null);
   const [realWeather,setRealWeather] = useState(null)
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
   useEffect(() => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
     var timer = setInterval(function(){
       GetWeatherInBrighton(setWeather);
       console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather))
@@ -50,7 +59,7 @@ export default function Home() {
           
           {weather != null ? <p> 
             <div className='widget thermometerwidget'>
-            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height="275" tooltipValue={false} className="thermometer"/>
+            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height={windowSize.height * 0.25} tooltipValue={false} className="thermometer"/>
             <div className='temp-text'>{Math.round(weather.main.temp)}&deg;C</div>
             </div>
             <div className="speedometer widget">
@@ -66,7 +75,7 @@ export default function Home() {
              </p> : ' Loading'}
              {realWeather != null ? <p className='real'> 
             <div className='widget thermometerwidget'>
-            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height="275" tooltipValue={false} className="thermometer"/>
+            <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height={windowSize.height * 0.25} tooltipValue={false} className="thermometer"/>
             <div className='temp-text'>{Math.round(realWeather.metric.temp)}&deg;C</div>
             </div>
             <div className="speedometer widget">
@@ -91,7 +100,7 @@ export default function Home() {
       
 
       <div className='logo'>
-          <Image src="/images/logo.png" alt="logo" width={270} height={60} />
+          <Image src="/images/logo.png" alt="logo" width={windowSize.width * 0.14} height={windowSize.height * 0.05} />
       </div>
 
       </div>

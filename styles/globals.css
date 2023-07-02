@@ -22,30 +22,29 @@
         color: #3aafe6;
         opacity: 0.8;
         text-shadow: 0 0 2vh rgba(50, 50, 50, 0.5);
-        font-size: 15vh;
+        font-size: 7vw;
       }
       .speedometer {
         margin-top: 20px;
-        margin-left: -200px;
+        margin-left: -10vw;
         width: 40%;
-        padding-top: 100px;
+        padding-top: 7vh;
         padding-left: 20px;
         padding-right: 20px;
       }
       .weather-desc {
-        margin-top: -80px;
+        margin-top: -7vh;
         font-size: 3vh;
       }
       .real-weather-desc {
-        margin-top: 0px;
         font-size: 3vh;
       }
       .speed-text {
-        margin-top: -150px;
+        margin-top: -15vh;
         font-size: 5vh;
       }
       .real-speed-text {
-        margin-top: -70px;
+        margin-top: -6vh;
         font-size: 3vh;
       }
       .gust {
@@ -56,8 +55,8 @@
       }
       .temp-text {
         font-size: 5vh;
-        margin-top: -100px;
-        margin-left: -150px;
+        margin-top: -9vh;
+        margin-left: -7vw;
       }
       .widget {
         border-radius: 20px;
@@ -68,23 +67,23 @@
         box-shadow: 5px 5px rgba(0,0,0,0.5);
       }
       .thermometerwidget {
-        margin-left: -10.41vw;
-        margin-top: -350px;
-        padding-top: 70px;
+        margin-left: -10vw;
+        margin-top: -32vh;
+        padding-top: 6vh;
       }
       .thermometer {
-        margin-left: 130px;
-        margin-top: -65px;
+        margin-left: 7vw;
+        margin-top: -6vh;
       }
       .weather-widget {
-        margin-left: -200px;
+        margin-left: -10vw;
         margin-top: 1.8vh;
         padding-top: 1.8vh;
         height: 28vh;
         width: 15.625vw;
       }
       .real-weather-widget {
-        margin-left: -190px;
+        margin-left: -10vw;
         margin-top: 20px;
         padding-top: 10px;
         height: 26.5vh;
@@ -95,10 +94,10 @@
         border: 2px solid rgba(0, 0, 0, .5);
         background-color: rgba(255,255,255,0.99);
         box-shadow: 5px 5px rgba(0,0,0,0.5);
-        margin-top: 40px;
-        margin-bottom: 100px;
+        margin-top: 3vh;
+        margin-bottom: 9vh;
         width:55%;
-        margin-left: 270px;
+        margin-left: 14vw;
       }
     body {
     background-color: #000;
@@ -108,11 +107,12 @@
         font-size: 5vh;
     }
     .logo {
-      margin-left: 850px;
+      margin-top: -0.2vh;
+      margin-left: 43.5vw;
     }
     .real {
-      margin-left: 1400px;
-      margin-top: -950px;
+      margin-left: 73vw;
+      margin-top: -87.4vh;
     }
 
     .legend {
