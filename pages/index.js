@@ -50,6 +50,7 @@ export default function Home() {
     }
 
   }
+
   return (
     <div className=''>
       {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/800.jpg" layout="fill" className="opacity-75"/>}
@@ -67,7 +68,7 @@ export default function Home() {
              <div className='speed-text'>{Math.round(weather.wind.speed * 1.61 * 100) / 100}kmh</div>
             </div>
              <div className='widget weather-widget'>
-             <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width="200px" height="200px" className='weathericon'/>
+             <Image src={"/images/weatherIcons/" + weather.weather[0].icon + ".png"} width={`${windowSize.height * 0.18}px`} height={`${windowSize.height * 0.18}px`} className='weathericon'/>
             <div className='weather-desc'>{Capitalise(weather.weather[0].description)}</div>
             </div>
 
@@ -98,11 +99,11 @@ export default function Home() {
              
       </div>
       
-
+      {windowSize.width > 0 ?
       <div className='logo'>
-          <Image src="/images/logo.png" alt="logo" width={windowSize.width * 0.14} height={windowSize.height * 0.05} />
+      <Image src="/images/logo.png" alt="logo" className='logopng' height={windowSize.height * 0.05} width={windowSize.height * 0.25}/> 
       </div>
-
+: null}
       </div>
   )
 }
