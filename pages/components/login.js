@@ -13,7 +13,7 @@ const Login = ({ redirectPath }) => {
           <input
             type="text"
             className="form-input mt-1 block w-full bg-gray-50"
-            placeholder="Your site password"
+            placeholder="Your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
@@ -21,12 +21,16 @@ const Login = ({ redirectPath }) => {
         <button
           type="submit"
           className="mt-3 bg-green-400 text-white p-2 font-bold rounded hover:bg-green-600"
+
           onClick={(e) => {
+
             e.preventDefault()
             const cookies = new Cookies()
+
             cookies.set(consts.SiteReadCookie, password, {
               path: "/",
             })
+            
             window.location.href = redirectPath ?? "/"
           }}
         >
