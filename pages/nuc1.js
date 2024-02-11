@@ -1,76 +1,63 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from "next/router"
-import  Login  from "./components/login"
-import { getJWT, getTickets } from '../tickets/ticketCount'
+import Image from 'next/image'
 import Clock from 'react-live-clock';
-import { GetWeatherIndexJS, wunderground } from './api/weather';
-import Image from 'next/image';
+import { useState } from 'react';
+import { GetWeatherHere, GetWeatherIndexJS, GetWeatherNUC1, wunderground} from './api/weather';
+import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const Thermometer = dynamic(() => import('react-thermometer-ecotropy'), {
   ssr: false,
 })
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-export default function Tickets({hasReadPermission}) {
-  const [tickets,SetTickets] = React.useState(0);
-    const router = useRouter()
-    const [weather,setWeather] = useState(null);
-    const [realWeather,setRealWeather] = useState(null)
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
+
+
+export default function Home() {
+  const [weather,setWeather] = useState(null);
+  const [realWeather,setRealWeather] = useState(null)
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
     });
-    let jwt;
-    useEffect(() => {
-      var timer = setInterval(function(){
-        GetWeatherIndexJS(setWeather);
-        if (hasReadPermission) {
-          getTickets(jwt,SetTickets);
-          wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
-        }
-
-      }
-      
-      ,180000);
-      GetWeatherIndexJS(setWeather);
-      wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
-      if (hasReadPermission) {
-        getJWT((token) => {
-          getTickets(token,SetTickets);
-          jwt = token;
-        })
-        
-      }
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }, [])
-
-
-    if (!hasReadPermission) {
-        return <Login redirectPath={router.asPath} />
-      }
-
+    var timer = setInterval(function(){
+        GetWeatherNUC1(setWeather);
+      wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID_NUC_1}`,setRealWeather)
+    }
     
+    ,60000);
+    GetWeatherNUC1(setWeather);
+    wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID_NUC_1}`,setRealWeather)
+  }, [])
 
-      var imageurl;
-      if(weather != null) {
-        var idnum = ("" + weather.weather[0].id)[0]
-        if(idnum == 8) {
-          imageurl = "" + weather.weather[0].id
-        } else {
-          imageurl = "" + idnum
-        }
-    
-      }
+  function Capitalise(string) {
+    const words = string.split(" ");
+    for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+  return(words.join(" "));
+  }
+  var imageurl;
+  if(weather != null) {
+    var idnum = ("" + weather.weather[0].id)[0]
+    if(idnum == 8) {
+      imageurl = "" + weather.weather[0].id
+    } else {
+      imageurl = "" + idnum
+    }
 
-      return (
-        <div className=''>
+  }
+
+  return (
+    <div className=''>
       {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/800.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
       <div className='clock-div'><Clock format={'HH:mm:ss'} ticking={true}/><p className='legend'>&larr; Predicted &nbsp;&nbsp;&nbsp;&nbsp; Actual &rarr;</p></div>
-      <div className='ticket-widget'></div>
+          
           {weather != null ? <p> 
             <div className='widget thermometerwidget'>
             <Thermometer theme="dark" value={Math.round(weather.main.temp)} max="40" steps="" format="°C" size="large" height={windowSize.height * 0.25} tooltipValue={false} className="thermometer"/>
@@ -118,12 +105,5 @@ export default function Tickets({hasReadPermission}) {
       </div>
 : null}
       </div>
-      )
-}
-function Capitalise(string) {
-  const words = string.split(" ");
-  for (let i = 0; i < words.length; i++) {
-  words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-}
-return(words.join(" "));
+  )
 }

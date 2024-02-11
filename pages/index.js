@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Clock from 'react-live-clock';
 import { useState } from 'react';
-import { GetWeatherHere, GetWeatherInBrighton, wunderground} from './api/weather';
+import { GetWeatherHere, GetWeatherIndexJS, wunderground} from './api/weather';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const Thermometer = dynamic(() => import('react-thermometer-ecotropy'), {
@@ -24,13 +24,13 @@ export default function Home() {
       height: window.innerHeight,
     });
     var timer = setInterval(function(){
-      GetWeatherInBrighton(setWeather);
-      console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather))
+      GetWeatherIndexJS(setWeather);
+      wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
     }
     
     ,60000);
-    GetWeatherInBrighton(setWeather);
-    console.log(wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather))
+    GetWeatherIndexJS(setWeather);
+    wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
   }, [])
 
   function Capitalise(string) {
