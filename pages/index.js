@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import Clock from 'react-live-clock';
 import { useState } from 'react';
-import { GetWeatherHere, GetWeatherIndexJS, wunderground} from './api/weather';
+import { GetWeatherHere, GetWeather, wunderground} from './api/weather';
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+
 const Thermometer = dynamic(() => import('react-thermometer-ecotropy'), {
   ssr: false,
 })
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-
 
 export default function Home() {
   const [weather,setWeather] = useState(null);
@@ -24,12 +24,12 @@ export default function Home() {
       height: window.innerHeight,
     });
     var timer = setInterval(function(){
-      GetWeatherIndexJS(setWeather);
+      GetWeather(setWeather);
       wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
     }
     
     ,60000);
-    GetWeatherIndexJS(setWeather);
+    GetWeather(setWeather);
     wunderground(`${process.env.NEXT_PUBLIC_WUNDERGROUND}`,`${process.env.NEXT_PUBLIC_STATIONID}`,setRealWeather)
   }, [])
 
@@ -52,7 +52,7 @@ export default function Home() {
   }
 
   return (
-    <div className=''>
+    <div>
       {weather != null ? <Image src={"/images/weatherPhotos/" + imageurl + ".jpeg"} layout="fill" className="opacity-75"/> : <Image src="/images/weatherPhotos/800.jpg" layout="fill" className="opacity-75"/>}
       
       <div className = 'center'>
@@ -95,7 +95,7 @@ export default function Home() {
             
             </div>
              
-             </p> : ' Loading'}
+             </p> : ''}
              
       </div>
       
