@@ -36,6 +36,6 @@ export async function wunderground(apiKey,stationID, callback) {
       //let data = await response.json()
       //console.log(data)
       
-      //callback(data.observations[0])
+      callback(data.observations[0])
 
 }
