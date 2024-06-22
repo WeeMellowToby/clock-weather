@@ -30,6 +30,7 @@ async function getWeather(url) {
 export async function wunderground(apiKey,stationID, callback) {
       let url= `https://api.weather.com/v2/pws/observations/current?stationId=${stationID}&format=json&units=m&apiKey=${apiKey}`
       let response = await fetch(url)
+      console.log(response)
       let data = await response.json()
       callback(data.observations[0])
 
