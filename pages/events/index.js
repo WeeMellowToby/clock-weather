@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { AddEvent, AddUser, getEvents, SignIn } from '../api/firebase'
-import Event from '../components/event'
+import Event from '../components/Event'
 import { UserContext } from '../lib/context'
 export default function Events() {
     const { user, userData } = useContext(UserContext)
